@@ -323,8 +323,8 @@ class DorisUnifiedClient:
             async with streamablehttp_client(
                 self.config.server_url,
                 timeout=timedelta(seconds=self.config.timeout)
-            ) as (read, write):
-                async with ClientSession(read, write) as session:
+            ) as (read, write, read_timeout_seconds):
+                async with ClientSession(read, write, read_timeout_seconds) as session:
                     self.session = session
                     self._init_sub_clients()
 
@@ -484,7 +484,7 @@ async def example_stdio():
 
 async def example_http():
     """HTTP mode example"""
-    client = await create_http_client("http://localhost:8080")
+    client = await create_http_client("http://localhost:3000/mcp")
 
     async def test_client(client: DorisUnifiedClient):
         # Get server capabilities
@@ -503,7 +503,7 @@ async def example_http():
 
 if __name__ == "__main__":
     # Run stdio example
-    asyncio.run(example_stdio())
+    # asyncio.run(example_stdio())
 
     # Run HTTP example
-    # asyncio.run(example_http()) 
+    asyncio.run(example_http())
