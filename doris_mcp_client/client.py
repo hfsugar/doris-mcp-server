@@ -498,6 +498,11 @@ async def example_http():
         result = await client.get_database_list()
         print(f"Database list: {result}")
 
+        prompts = await client.list_all_prompts()
+        print(f"prompt list: {prompts}")
+
+        print(f"tools list: {tools}")
+
     await client.connect_and_run(test_client)
 
 
