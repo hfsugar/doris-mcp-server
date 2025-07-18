@@ -1337,7 +1337,6 @@ class MetadataExtractor:
                 query = f"SHOW TABLES FROM `{effective_catalog}`.`{effective_db}`"
             else:
                 query = f"SHOW TABLES FROM `{effective_db}`"
-            
             result = await self._execute_query_async(query, effective_db)
             
             if not result:

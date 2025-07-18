@@ -73,6 +73,7 @@ class DorisConnection:
 
     async def execute(self, sql: str, params: tuple | None = None, auth_context=None) -> QueryResult:
         """Execute SQL query"""
+        logging.info(f"execute sql : {sql}")
         start_time = time.time()
 
         try:
